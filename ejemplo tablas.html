@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>LMSGI</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Ejemplos de clase" />
+		<meta name="author" content="Andrea Romero" />
+		<link rel="stylesheet" type="text/css" href="" />
+		<style type="text/css">
+			
+			.contenedor {
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				bottom: 20px;
+				right: 20px;
+				background-color: green;
+				overflow: hidden;
+			}
+			
+			.contenedor div {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				border: 1px solid black;
+				left: 0px;
+				transition: left 3s, transform 1s, top 3s;
+			}
+			
+			.contenedor div:nth-of-type(1){
+				top: 0px;
+			}
+			.contenedor div:nth-of-type(2){
+				top: 120px;
+			}
+			.contenedor div:nth-of-type(3){
+				top: 240px;
+			}
+			.contenedor div:nth-of-type(4){
+				top: 360px;
+			}
+			.contenedor div:nth-of-type(2n+1){
+				font-size: 200%;
+			}
+			/*El espacio significa descendencia de algún tipo (tiene que estar dentro, pero no tiene que ser el primero dentro*/
+			
+		</style>
+		<script>
+			function sal_corriendo(elemento){
+				elemento.style.left = "2000px";
+			}
+			function desaparece_tercer_div(){
+				var elemento = document.querySelector(".contenedor div:nth-of-type(3)");
+				elemento.style.display = "none";
+			}
+			function gira_cuarto_div(){
+				var elemento = document.getElementById("cuarto_div");
+				if (elemento.style.transform == "rotateX(180deg)"){
+					elemento.style.transform = "rotateX(0deg)";
+				} else {
+				elemento.style.transform = "rotateX(180deg)";
+				}
+			}
+			function desplaza_segundo_div(){
+				var elemento = document.querySelector(".contenedor div:nth-of-type(2)");
+				elemento.style.transform = "rotateZ(180deg)";
+				elemento.style.top = "0px";
+				elemento.style.left = "1200px";
+			}
+		</script>
+	</head>
+	<body>
+		<!-- Esto es un comentario -->
+		<div class="contenedor">
+			<div onclick="sal_corriendo(this);">A</div>
+			<div onclick="desplaza_segundo_div();">B</div>
+			<div onclick="desaparece_tercer_div();">C</div>
+			<div id="cuarto_div" onclick="gira_cuarto_div();">R</div>
+		</div>
+	</body>
+</html>
